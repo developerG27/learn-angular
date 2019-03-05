@@ -1,8 +1,16 @@
 <div class="col-md-12 mt-3">
   <h1>{{page_title}}</h1>
-  <p>
+  <p *ngIf="status !='success'">
     Registrate en nuestra plataforma para crear nuevas entradas y mucho mas
   </p>
+
+  <div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+    El registro se ha completado correctamente, <a [routerLink ]="['/login']">Login</a>
+  </div>
+
+  <div class="alert alert-danger col-md-5" *ngIf="status == 'error'">
+    El registro no se ha completado correctamente
+  </div>
 
   <!--Formulario di registrazione-->
   <form class="col-md-5 ml-0 pl-0" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
@@ -17,7 +25,8 @@
 
     <div class="form-group">
       <label for="surname">Apellido</label>
-      <input type="text" name="surname" class="form-control" #surname="ngModel" [(ngModel)]="user.surname" required pattern="[a-zA-Z]+">
+      <input type="text" name="surname" class="form-control" #surname="ngModel" [(ngModel)]="user.surname" required
+        pattern="[a-zA-Z]+">
 
       <small *ngIf="!surname.valid && surname.touched" class="invalid-feedback d-block">
         Il cognome non è valido
@@ -34,7 +43,8 @@
 
     <div class="form-group">
       <label for="password">Contrasena</label>
-      <input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="user.password" required>
+      <input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="user.password"
+        required>
       <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
         La password non è valida
       </small>
