@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   constructor() { 
     this.page_title = 'Registrati';
-    this.user = new User(1,'','','ROLE_USER','','','','');
+    this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
 
     /*
     public id: number,
@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(form){
     console.log(this.user);
+    form.reset();
   }
 
 }
